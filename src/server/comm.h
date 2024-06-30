@@ -8,6 +8,9 @@
 #include <util/delay.h>
 
 #include "my_uart.h"
+#include "adc.h"
+
+#define MAX_FREQ 20
 
 typedef struct ui_s {
     int32_t  fd;
@@ -16,11 +19,27 @@ typedef struct ui_s {
     uint8_t  mode;
 } ui_t;
 
+typedef struct __attribute__((packed)) packet_s
+{
+    uint16_t timestamp;
+    uint16_t value;
+    uint8_t channel;
+} packet_t;
+
+
 volatile uint8_t g_buf[sizeof(ui_t)];
 volatile uint8_t writeIndex;
 volatile uint8_t recv;
 volatile ui_t options;
 
+
 ISR(USART0_RX_vect);
 
 void handle_settings(ui_t* options);
+
+void sample(ui_t* options);
+void sample_cont(ui_t* options);
+void sample_buf(ui_t* options);
+
+void send_packet(packet_t* packet);
+

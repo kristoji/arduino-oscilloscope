@@ -8,7 +8,7 @@
 struct ui_s;
 typedef struct ui_s ui_t;
 
-typedef struct packet_s
+typedef struct __attribute__((packed)) packet_s
 {
     uint16_t timestamp;
     uint16_t value;

@@ -1,5 +1,5 @@
 CC=gcc
-CCOPTS=-std=gnu99
+CCOPTS=std=gnu99
 TARGET = client
 BINS = $(TARGET).elf
 OBJS = serial_linux.o \
