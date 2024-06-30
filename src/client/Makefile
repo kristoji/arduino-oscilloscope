@@ -1,25 +1,32 @@
-CC=gcc
-CCOPTS=std=gnu99
+CC = gcc
+CCOPTS = -std=gnu99
 TARGET = client
 BINS = $(TARGET).elf
-OBJS = serial_linux.o \
-	   ui.o			  \
-	   sample.o
+SRCS = serial_linux.c ui.c sample.c client.c
+OBJS = $(SRCS:.c=.o)
 
-.phony: clean all
+.PHONY: clean all
 
 all: $(BINS)
 
-%.elf: %.o $(OBJS)
-	$(CC) -$(CCOPTS) -o $@ $^
+$(BINS): $(OBJS)
+	$(CC) $(CCOPTS) -o $@ $^
 
-%.o: %.c 
-	$(CC) -$(CCOPTS) -c -o $@ $<
+%.o: %.c
+	$(CC) $(CCOPTS) -c -o $@ $<
+
+# Include the dependency files
+-include $(OBJS:.o=.d)
+
+# Generate dependency files
+%.d: %.c
+	@$(CC) -MM $(CCOPTS) $< > $@.tmp
+	@sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.tmp > $@
+	@rm -f $@.tmp
 
 # serial_linux <serial_file> <baudrate>
 run: $(BINS)
 	./$(BINS) /dev/ttyUSB0 19200
 
 clean:
-	rm -rf *~ $(BINS) $(OBJS)
-
+	rm -rf *~ $(BINS) $(OBJS) $(OBJS:.o=.d)
