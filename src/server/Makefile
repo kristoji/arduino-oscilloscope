@@ -1,7 +1,9 @@
 TARGET=server
 HEX = $(TARGET).hex
 BINS=$(TARGET).elf 
-OBJS=my_uart.o \
+OBJS=my_uart.o  \
+	 adc.o		\
+	 comm.o
 	 
 HEADERS=my_uart.h \
 		server.h 

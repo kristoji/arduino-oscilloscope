@@ -17,5 +17,6 @@ typedef struct packet_s
 
 void sample_buf(ui_t* options);
 void sample_cont(ui_t* options);
+void send_settings(ui_t* options);
 
 #include "ui.h"

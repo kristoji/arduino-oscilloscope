@@ -7,6 +7,5 @@
 #include <avr/sleep.h>
 #include <util/delay.h>
 
-#include "my_uart.h"
-#include "adc.h"
-#include "comm.h"
+void adc_init();
+uint16_t adc_read(uint8_t chnl);

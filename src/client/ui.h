@@ -6,10 +6,10 @@
 #define MAX_FREQ 20
 
 typedef struct ui_s {
-    int fd;
+    int32_t  fd;
     uint16_t channel_msk;
-    uint8_t frequency;
-    uint8_t mode;
+    uint8_t  frequency;
+    uint8_t  mode;
 } ui_t;
 
 int8_t display_menu(ui_t* options);
