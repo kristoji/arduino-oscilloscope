@@ -11,7 +11,7 @@ int main(int argc, const char** argv) {
 
   if (argc<3) 
   {
-    printf("serial_linux <serial_file> <baudrate>\n");
+    printf("client.elf <serial_file> <baudrate>\n");
     exit(EXIT_FAILURE);
   }
 

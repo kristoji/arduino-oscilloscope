@@ -2,6 +2,8 @@
 
 void sample_cont(ui_t* options)
 {
+    printf("----------------------------\n");
+    printf("Starting continuous sampling:\n");
     char buf[1024];
     int n;
     while (1) 

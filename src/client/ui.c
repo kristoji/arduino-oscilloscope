@@ -19,11 +19,12 @@ int8_t display_menu(ui_t* options)
         printf("    1. Set frequency\t[curr Hz: %d]\n", options->frequency);
         printf("    2. Set mode\t\t[curr mode: %s]\n", options->mode? "buffered" : "continuous");
         printf("    3. Start sampling\n");
+        printf("    4. Exit\n");
         printf("> ");
 
         res = get_num();
 
-    } while (res < 0 || res > 3);
+    } while (res < 0 || res > 4);
 
     return res;
 }

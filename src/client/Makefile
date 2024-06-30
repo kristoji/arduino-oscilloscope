@@ -16,9 +16,9 @@ all: $(BINS)
 %.o: %.c 
 	$(CC) -$(CCOPTS) -c -o $@ $<
 
-# serial_linux <serial_file> <baudrate> <read=1, write=0>
+# serial_linux <serial_file> <baudrate>
 run: $(BINS)
-	./$(BINS) /dev/ttyUSB0 19200 1
+	./$(BINS) /dev/ttyUSB0 19200
 
 clean:
 	rm -rf *~ $(BINS) $(OBJS)
