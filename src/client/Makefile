@@ -2,7 +2,7 @@ CC = gcc
 CCOPTS = -std=gnu99
 TARGET = client
 BINS = $(TARGET).elf
-SRCS = serial_linux.c ui.c sample.c client.c
+SRCS = serial_linux.c ui.c sample.c client.c plot.c
 OBJS = $(SRCS:.c=.o)
 
 .PHONY: clean all

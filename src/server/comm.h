@@ -31,6 +31,7 @@ volatile uint8_t g_buf[sizeof(ui_t)];
 volatile uint8_t writeIndex;
 volatile uint8_t recv;
 volatile ui_t options;
+volatile uint8_t g_time;
 
 
 ISR(USART0_RX_vect);

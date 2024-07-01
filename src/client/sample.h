@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#include "plot.h"
+
 struct ui_s;
 typedef struct ui_s ui_t;
 

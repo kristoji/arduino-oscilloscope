@@ -7,6 +7,7 @@ int main(void) {
     adc_init();
 
     options.mode = 2;           // stop as default
+    g_time = 0;
     
     sei();
     

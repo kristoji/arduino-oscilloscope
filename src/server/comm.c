@@ -59,13 +59,14 @@ void sample_cont(ui_t* options)
         {
             adc_value = adc_read(i);
             packet_t packet = {
-                .timestamp = 1,             // TODO: timestamp 
+                .timestamp = g_time,             // TODO: timestamp 
                 .value = adc_value,        
                 .channel = i};
 
             send_packet(&packet);
         }
     }
+    g_time = (g_time + 1) % 100;
 }
 
 void sample_buf(ui_t* options)

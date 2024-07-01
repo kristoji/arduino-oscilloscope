@@ -17,7 +17,7 @@ int8_t display_menu(ui_t* options)
         printf("Select an option:\n");
         printf("    0. Set channels\t[curr msk: %2x]\n", options->channel_msk);
         printf("    1. Set frequency\t[curr Hz: %d]\n", options->frequency);
-        printf("    2. Set mode\t\t[curr mode: %s]\n", options->mode? "buffered" : "continuous");
+        printf("    2. Set mode\t\t[curr mode: %s]\n", !options->mode? "continuous": (options->mode == 1? "buffered" : "stop"));
         printf("    3. Start sampling\n");
         printf("    4. Exit\n");
         printf("> ");
@@ -72,9 +72,9 @@ void set_mode(ui_t* options)
 
     do
     {
-        printf("Insert a mode (0: continuous, 1: buffered): ");
+        printf("Insert a mode (0: continuous, 1: buffered, 2: stop): ");
         res = get_num();
-    } while (res < 0 || res > 1);
+    } while (res < 0 || res > 2);
 
     options->mode = res;
 }
@@ -98,17 +98,21 @@ uint8_t ui_menu(ui_t* options)
             break;
 
         case 3:
-            if (options->mode)
+            send_settings(options);
+
+            if (options->mode == 1)
             {
                 sample_buf(options);
             }
-            else
+            else if (options->mode == 0)
             {
                 sample_cont(options);
             }
             break;
+
         case 4:
             return 0;
+
         default:
             break;
     }

@@ -4,8 +4,11 @@ void sample_cont(ui_t* options)
 {
     printf("----------------------------\n");
     printf("Starting continuous sampling:\n");
-    
-    send_settings(options);
+
+    uint16_t values[16][100] = {0};
+    uint16_t prev_timestamp = -1;
+
+    init_gnuplot();
 
     while (1) 
     {
@@ -21,8 +24,16 @@ void sample_cont(ui_t* options)
 
         memcpy(&packet, buf, sizeof(packet_t));
 
-        printf("Time: %d, Channel: %d, Value: %d\n", packet.timestamp, packet.channel, packet.value);
+        if (packet.timestamp != prev_timestamp)
+        {
+            plot_with_gnuplot(values);
+            prev_timestamp = packet.timestamp;
+        }
+
+        values[packet.channel][packet.timestamp%100] = packet.value;
     }
+
+    close_gnuplot();
 } 
 
 void sample_buf(ui_t* options)
