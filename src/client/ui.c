@@ -100,14 +100,8 @@ uint8_t ui_menu(ui_t* options)
         case 3:
             send_settings(options);
 
-            if (options->mode == 1)
-            {
-                sample_buf(options);
-            }
-            else if (options->mode == 0)
-            {
-                sample_cont(options);
-            }
+            sample(options);
+            
             break;
 
         case 4:

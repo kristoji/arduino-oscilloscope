@@ -17,8 +17,8 @@ typedef struct __attribute__((packed)) packet_s
     uint8_t channel;
 } packet_t;
 
-void sample_buf(ui_t* options);
-void sample_cont(ui_t* options);
+void sample(ui_t* options);
 void send_settings(ui_t* options);
+void receive_packet(int fd, packet_t* packet);
 
 #include "ui.h"

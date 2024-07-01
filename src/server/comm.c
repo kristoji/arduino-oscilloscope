@@ -45,8 +45,13 @@ void sample(ui_t* options)
     {
         sample_buf(options);
     }
+    else
+    {
+        // stop
+        g_time = 0;
+    }
 
-    // else stop
+    g_time = (g_time + 1) % MAX_TIME;
 }
 
 void sample_cont(ui_t* options)
@@ -59,19 +64,43 @@ void sample_cont(ui_t* options)
         {
             adc_value = adc_read(i);
             packet_t packet = {
-                .timestamp = g_time,             // TODO: timestamp 
+                .timestamp = g_time,
                 .value = adc_value,        
                 .channel = i};
 
             send_packet(&packet);
         }
     }
-    g_time = (g_time + 1) % 100;
+    // g_time = (g_time + 1) % 100;
 }
 
 void sample_buf(ui_t* options)
 {
-    UART_putString("Sample buffered not implemented yet\n");
+    uint16_t adc_value;
+
+    for (uint8_t i = 0; i < 16; i++)
+    {
+        if (options->channel_msk & (1 << i))
+        {
+            adc_value = adc_read(i);
+            packet_t packet = {
+                .timestamp = g_time,
+                .value = adc_value,        
+                .channel = i};
+
+            pkt_buff[g_time % BULK_SIZE] = packet;
+        }
+    }
+
+    if (g_time % BULK_SIZE == BULK_SIZE - 1)
+    {
+        for (uint8_t i = 0; i < BULK_SIZE; i++)
+        {
+            send_packet(&pkt_buff[i]);
+        }
+    }
+
+    // g_time = (g_time + 1) % 100;
 }
 
 void send_packet(packet_t* packet){

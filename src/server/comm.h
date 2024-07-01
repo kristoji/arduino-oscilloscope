@@ -11,6 +11,8 @@
 #include "adc.h"
 
 #define MAX_FREQ 20
+#define BULK_SIZE 10
+#define MAX_TIME 100
 
 typedef struct ui_s {
     int32_t  fd;
@@ -32,6 +34,7 @@ volatile uint8_t writeIndex;
 volatile uint8_t recv;
 volatile ui_t options;
 volatile uint8_t g_time;
+volatile packet_t pkt_buff[BULK_SIZE];
 
 
 ISR(USART0_RX_vect);
