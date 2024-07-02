@@ -1,3 +1,9 @@
+/**************************************************\
+ * @file server.h       
+ *
+ * @brief Header for the Oscilloscope main 
+\**************************************************/
+
 #pragma once
 #include <stdio.h>
 #include <stdint.h>

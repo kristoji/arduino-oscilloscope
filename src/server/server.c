@@ -1,3 +1,9 @@
+/**************************************************\
+ * @file server.c                         
+ *
+ * @brief Contains the Oscilloscope main function
+\**************************************************/
+
 #include "server.h"
 
 int main(void) {

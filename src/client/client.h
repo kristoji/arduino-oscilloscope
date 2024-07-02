@@ -1,3 +1,9 @@
+/**************************************************\
+ * @file comm.h                         
+ *
+ * @brief Header for the client main function
+\**************************************************/
+
 #pragma once
 #include <stdio.h>
 #include <stdint.h>

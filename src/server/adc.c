@@ -1,3 +1,9 @@
+/**************************************************\
+ * @file adc.c                         
+ *
+ * @brief Implementation of the ADC functions
+\**************************************************/
+
 #include "adc.h"
 
 void adc_init() 

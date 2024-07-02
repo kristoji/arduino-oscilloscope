@@ -1,3 +1,9 @@
+/**************************************************\
+ * @file client.c                         
+ *
+ * @brief Contains the main function for the client
+\**************************************************/
+
 #include "client.h"
 
 ui_t options = 

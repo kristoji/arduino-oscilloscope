@@ -1,14 +1,15 @@
+/**************************************************\
+ * @file sample.c                         
+ *
+ * @brief Implementation of functions to get samples
+\**************************************************/
+
 #include "sample.h"
 
-void sample(ui_t* options)
+uint8_t init_sample(ui_t* options)
 {
     printf("----------------------------\n");
     printf("Starting sampling:\n");
-
-    int16_t values[16][100] = {-10};
-    uint16_t prev_timestamp = -1;
-
-    init_gnuplot();
 
     packet_t packet;
     uint8_t fail_cnt = 0;
@@ -22,8 +23,23 @@ void sample(ui_t* options)
     {
         printf("Failed to receive first packet\n");
         send_stop(options);
+        return 1;
+    }
+
+    return 0;
+}
+
+void sample(ui_t* options)
+{
+    if (init_sample(options))
+    {
         return;
     }
+
+    packet_t packet;
+    int16_t values[16][100] = {-10};
+    uint16_t prev_timestamp = -1;
+    init_gnuplot();
 
     while (1) 
     {

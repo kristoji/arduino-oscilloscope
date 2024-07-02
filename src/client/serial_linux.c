@@ -1,13 +1,10 @@
+/**************************************************\
+ * @file serial_linux.c                         
+ *
+ * @brief Implementation of functions to interact with serial port
+\**************************************************/
+
 #include "serial_linux.h"
-#include <errno.h>
-#include <termios.h>
-#include <unistd.h>
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 
 int serial_set_interface_attribs(int fd, int speed, int parity) {
   struct termios tty;

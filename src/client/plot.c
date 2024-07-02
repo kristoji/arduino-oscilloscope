@@ -1,3 +1,9 @@
+/**************************************************\
+ * @file plot.c                         
+ *
+ * @brief Implementation of the functions to plot data
+\**************************************************/
+
 #include "plot.h"
 
 FILE *gnuplotPipe = NULL;

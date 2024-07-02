@@ -1,3 +1,9 @@
+/**************************************************\
+ * @file ui.c                         
+ *
+ * @brief Implementation of the user interface functions
+\**************************************************/
+
 #include "ui.h"
 
 int8_t get_num()

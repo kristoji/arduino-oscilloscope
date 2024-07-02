@@ -1,9 +1,19 @@
+/**************************************************\
+ * @file serial_linux.h                         
+ *
+ * @brief Header for functions to interact with serial port
+\**************************************************/
+
 #pragma once
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include <termios.h>
 #include <unistd.h>
+#include <errno.h>
+#include <termios.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #ifdef __cplusplus
 extern "C" {

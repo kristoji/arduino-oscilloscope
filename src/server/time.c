@@ -1,3 +1,11 @@
+/**************************************************\
+ * @file time.c                         
+ *
+ * @brief Implements the functions to handle 
+ *        the system time
+\**************************************************/
+
+
 #include "time.h"
 
 void time_init()

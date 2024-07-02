@@ -1,3 +1,9 @@
+/**************************************************\
+ * @file comm.c                         
+ *
+ * @brief Implementation of communication functions
+\**************************************************/
+
 #include "comm.h"
 
 ISR(USART0_RX_vect) {
