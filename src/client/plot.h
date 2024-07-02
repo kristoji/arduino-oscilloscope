@@ -5,4 +5,4 @@
 
 void init_gnuplot();
 void close_gnuplot();
-void plot_with_gnuplot(uint16_t values[16][100]);
+void plot_with_gnuplot(int16_t values[16][100]);

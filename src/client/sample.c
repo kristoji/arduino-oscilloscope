@@ -5,7 +5,7 @@ void sample(ui_t* options)
     printf("----------------------------\n");
     printf("Starting sampling:\n");
 
-    uint16_t values[16][100] = {0};
+    int16_t values[16][100] = {-10};
     uint16_t prev_timestamp = -1;
 
     init_gnuplot();
@@ -14,7 +14,7 @@ void sample(ui_t* options)
     uint8_t fail_cnt = 0;
     do {
         receive_packet(options->fd, &packet);
-        printf("received T: %d, C: %d, V: %d\n", packet.timestamp, packet.channel, packet.value);
+        // printf("received T: %d, C: %d, V: %d\n", packet.timestamp, packet.channel, packet.value);
         fail_cnt++;
     } while(packet.timestamp != 0 && fail_cnt < 10);
 
@@ -28,7 +28,7 @@ void sample(ui_t* options)
     while (1) 
     {
         receive_packet(options->fd, &packet);
-        printf("received T: %d, C: %d, V: %d\n", packet.timestamp, packet.channel, packet.value);
+        // printf("received T: %d, C: %d, V: %d\n", packet.timestamp, packet.channel, packet.value);
 
         if (packet.timestamp != prev_timestamp)
         {

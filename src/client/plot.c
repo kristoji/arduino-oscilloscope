@@ -11,7 +11,10 @@ void init_gnuplot() {
         fprintf(gnuplotPipe, "set title 'Oscilloscope'\n");
         fprintf(gnuplotPipe, "set xlabel 'Time'\n");
         fprintf(gnuplotPipe, "set ylabel 'Value'\n");
-        fprintf(gnuplotPipe, "set yrange [0:1024]\n");
+        fprintf(gnuplotPipe, "set yrange [-20:1030]\n");
+        fprintf(gnuplotPipe, "set xrange [0:100]\n");
+        fprintf(gnuplotPipe, "set key outside\n");
+        fprintf(gnuplotPipe, "set grid\n");
     }
 }
 
@@ -22,7 +25,7 @@ void close_gnuplot() {
     }
 }
 
-void plot_with_gnuplot(uint16_t values[16][100]) {
+void plot_with_gnuplot(int16_t values[16][100]) {
     if (gnuplotPipe == NULL) {
         fprintf(stderr, "Error: Gnuplot pipe is not open\n");
         return;
