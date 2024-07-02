@@ -34,12 +34,12 @@ volatile uint8_t writeIndex;
 volatile uint8_t recv;
 volatile ui_t options;
 volatile uint8_t g_time;
+volatile uint8_t g_time_sent;
 volatile packet_t pkt_buff[BULK_SIZE];
+volatile uint8_t pkt_buff_index;
 
 
 ISR(USART0_RX_vect);
-
-void handle_settings(ui_t* options);
 
 void sample(ui_t* options);
 void sample_cont(ui_t* options);

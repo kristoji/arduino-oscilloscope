@@ -1,22 +1,22 @@
 #include "server.h"
 
-volatile uint8_t channel = 0;
-
 int main(void) {
     UART_init();
     adc_init();
-
-    options.mode = 2;           // stop as default
-    g_time = 0;
+    time_init();
     
     sei();
     
-    while (1) {
-        handle_settings(&options);
-
-        sample(&options);
-        
-        _delay_ms(1000);        // find a way to use the frequency
+    while (1) 
+    {
+        if (timer_irq)
+        {
+            timer_irq = 0;
+    
+            if (g_time % (MAX_FREQ / options.frequency) == 0)
+                sample(&options);
+        }
+        sleep_mode();        
     }
     
     return 0;

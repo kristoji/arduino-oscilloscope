@@ -20,5 +20,7 @@ typedef struct __attribute__((packed)) packet_s
 void sample(ui_t* options);
 void send_settings(ui_t* options);
 void receive_packet(int fd, packet_t* packet);
+void send_stop(ui_t* options);
+void recv_all(ui_t* options);
 
 #include "ui.h"

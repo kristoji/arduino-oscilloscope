@@ -2,6 +2,7 @@
 
 ui_t options = 
 {
+    .fd = 0,
     .channel_msk = 1,
     .frequency = 1,
     .mode = 0
@@ -20,7 +21,9 @@ int main(int argc, const char** argv) {
 
   options.fd = serial_open(serial_device);
   serial_set_interface_attribs(options.fd, baudrate, 0);
-  serial_set_blocking(options.fd, 1);
+  serial_set_blocking(options.fd, 0);
+
+  send_stop(&options);
 
   uint8_t run = 1;
   do

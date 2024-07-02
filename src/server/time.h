@@ -8,6 +8,10 @@
 #include <util/delay.h>
 
 #include "my_uart.h"
-#include "adc.h"
 #include "comm.h"
-#include "time.h"
+
+volatile uint8_t timer_irq;
+
+void time_init();
+
+ISR(TIMER1_COMPA_vect);

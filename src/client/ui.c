@@ -100,7 +100,10 @@ uint8_t ui_menu(ui_t* options)
         case 3:
             send_settings(options);
 
-            sample(options);
+            if (options->mode != 2) 
+            {
+                sample(options);
+            }
             
             break;
 
