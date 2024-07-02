@@ -37,8 +37,17 @@ void sample(ui_t* options)
     }
 
     packet_t packet;
-    int16_t values[16][100] = {-10};
     uint16_t prev_timestamp = -1;
+    int16_t values[16][100];
+
+    for (int i = 0; i < 16; i++)
+    {
+        for (int j = 0; j < 100; j++)
+        {
+            values[i][j] = -100;
+        }
+    }
+
     init_gnuplot();
 
     while (1) 

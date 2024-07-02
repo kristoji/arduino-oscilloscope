@@ -22,6 +22,7 @@ git clone https://github.com/kristoji/arduino-oscilloscope
 cd arduino-oscilloscope/src/server
 make run
 cd ../client
+mkdir data
 make run
 ```
 
